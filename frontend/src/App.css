@@ -1,0 +1,566 @@
+/* --- UI REVAMP 2.0: "ONCOMZ" STYLE --- */
+
+/* 1. FONT IMPORT & GLOBAL STYLES */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-brand: #5F56D6; /* The main purple from the image */
+  --background-light: #F4F7FE; /* The light blueish-gray background */
+  --text-dark: #1a202c;
+  --text-light: #f7fafc;
+  --text-gray: #718096;
+  --border-color: #e2e8f0;
+  --border-radius: 12px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 2. LOGIN PAGE LAYOUT */
+.login-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.login-branding-panel {
+  flex-basis: 45%;
+  background-color: var(--primary-brand);
+  color: var(--text-light);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.branding-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.branding-tagline {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 3rem;
+  max-width: 400px;
+}
+
+.branding-illustration {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.branding-support {
+  position: absolute;
+  bottom: 3rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.branding-support a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-form-panel {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form-container h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.login-form-container p {
+  color: var(--text-gray);
+  margin-bottom: 2.5rem;
+}
+
+/* 3. MODERN FORM ELEMENTS */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+.input-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.input-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-brand);
+  box-shadow: 0 0 0 3px rgba(95, 86, 214, 0.2);
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-gray);
+}
+
+/* 4. BUTTONS */
+.button-solid {
+  width: 100%;
+  background-color: var(--primary-brand);
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.button-solid:hover {
+  background-color: #4c44b6;
+}
+.button-solid:disabled {
+  background-color: #a5b4fc;
+  cursor: not-allowed;
+}
+
+/* 5. DASHBOARD & SHARED COMPONENTS */
+.dashboard-layout {
+  padding: 2rem 3rem;
+}
+
+.header-light {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background-color: white;
+  border-bottom: 1px solid var(--border-color);
+}
+.header-logo-light {
+  color: var(--primary-brand);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.header-button {
+  background-color: #ede9fe;
+  color: var(--primary-brand);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.content-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.dashboard-header h1 { margin: 0; }
+.dashboard-actions { display: flex; gap: 1rem; }
+.dashboard-actions .button-solid { width: auto; }
+.dashboard-actions .button-secondary {
+    background-color: #f1f5f9;
+    color: var(--text-dark);
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.feedback-card-revamped {
+  /* The .content-card class provides the base style */
+}
+.feedback-card-revamped .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.feedback-card-revamped .card-body h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-gray);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Modals should stay consistent */
+.ReactModal__Overlay { background-color: rgba(0, 0, 0, 0.75); }
+.ReactModal__Content { max-width: 600px; margin: 5rem auto; padding: 2rem; border-radius: var(--border-radius); }
+
+/* --- UI REVAMP 3.0: "CREXTIO" DASHBOARD STYLES --- */
+/* Add these new styles to the bottom of App.css */
+
+:root {
+  --crextio-bg: #F0F2F5; /* The main light background */
+  --crextio-card-light: #FFFFFF;
+  --crextio-card-dark: #1C1C1E; /* The main dark card color */
+  --crextio-accent-yellow: #FFD66B;
+  --crextio-text-dark-primary: #1C1C1E;
+  --crextio-text-dark-secondary: #6D6D70;
+  --crextio-text-light-primary: #FFFFFF;
+  --crextio-text-light-secondary: #A0A0A5;
+  --crextio-border: #E5E7EB;
+}
+
+/* Override body background specifically for the dashboard layout */
+.dashboard-layout {
+  background-color: var(--crextio-bg);
+  padding: 1.5rem 2rem;
+  border-radius: 24px;
+  margin: 2rem;
+}
+
+/* Header for the new dashboard */
+.crextio-header {
+  margin-bottom: 2rem;
+}
+.crextio-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--crextio-text-dark-primary);
+  margin: 0;
+}
+.crextio-header p {
+  font-size: 1rem;
+  color: var(--crextio-text-dark-secondary);
+  margin-top: 0.25rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.stat-item {
+  background: var(--crextio-card-light);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+}
+.stat-item .stat-value {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--crextio-text-dark-primary);
+}
+.stat-item .stat-label {
+  font-size: 0.9rem;
+  color: var(--crextio-text-dark-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* New Tab System */
+.crextio-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: var(--crextio-card-light);
+  padding: 0.5rem;
+  border-radius: 99px;
+  display: inline-flex;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+}
+.crextio-tab-button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--crextio-text-dark-secondary);
+  transition: all 0.2s ease-in-out;
+}
+.crextio-tab-button.active {
+  background-color: var(--crextio-card-dark);
+  color: var(--crextio-text-light-primary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* New Dark Card Style for Tab Content */
+.crextio-card-dark {
+  background-color: var(--crextio-card-dark);
+  color: var(--crextio-text-light-primary);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  min-height: 300px;
+}
+.crextio-card-dark h2 {
+  margin-top: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* New List Item Style */
+.crextio-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+.crextio-list-item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+.crextio-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.list-item-icon {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.list-item-content {
+  flex-grow: 1;
+}
+.list-item-content strong {
+  color: var(--crextio-text-light-primary);
+  font-weight: 600;
+}
+.list-item-content span {
+  font-size: 0.9rem;
+  color: var(--crextio-text-light-secondary);
+}
+.list-item-action button {
+  background-color: var(--crextio-accent-yellow);
+  color: var(--crextio-text-dark-primary);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/* --- UI REVAMP 4.0: "GIVE FEEDBACK" MODAL STYLES --- */
+/* Add these new styles to the bottom of App.css */
+
+:root {
+  --pink-accent: #EC4899;
+}
+
+.feedback-modal-content {
+  background: white;
+  padding: 2.5rem;
+  color: var(--text-dark);
+  border-radius: var(--border-radius);
+  max-width: 500px !important; /* Override default modal width */
+}
+
+.modal-form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.modal-form-subtitle {
+  color: var(--text-gray);
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Sentiment Picker Styles */
+.sentiment-picker {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sentiment-button {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-gray);
+}
+
+.sentiment-button:hover {
+  border-color: var(--pink-accent);
+  color: var(--text-dark);
+}
+
+.sentiment-button.selected {
+  border-color: var(--pink-accent);
+  background-color: #fce7f3; /* Light pink background */
+  box-shadow: 0 0 0 1px var(--pink-accent);
+  color: var(--pink-accent);
+  font-weight: 600;
+}
+
+.sentiment-button.selected svg {
+  stroke: var(--pink-accent);
+}
+
+/* Modal Checkbox Styles */
+.modal-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+.modal-checkbox-group input {
+  width: 1.15em;
+  height: 1.15em;
+  accent-color: var(--pink-accent);
+}
+
+/* Modal Actions (Buttons) */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.button-pink {
+  background-color: var(--pink-accent);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button-cancel {
+  background-color: #F3F4F6; /* Light gray */
+  color: var(--text-gray);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- UI REVAMP 6.0: 3D BACKGROUND & FROSTED GLASS MODAL --- */
+/* Add these new styles to the bottom of App.css */
+
+/* 1. New 3D-Style Body Background */
+body {
+  /* We use multiple radial gradients to simulate soft, 3D-like orbs */
+  background-color: #f0f5f4; /* Fallback color */
+  background-image: 
+    radial-gradient(at 20% 15%, hsla(211, 80%, 85%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 85% 70%, hsla(330, 80%, 90%, 0.3) 0px, transparent 50%),
+    radial-gradient(at 5% 90%, hsla(140, 80%, 85%, 0.2) 0px, transparent 50%),
+    radial-gradient(at 70% 10%, hsla(20, 80%, 85%, 0.2) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* 2. The New Modal Overlay (Backdrop) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* NO background color or blur here. This layer just centers the modal. */
+  z-index: 2000;
+  padding: 1rem; /* Add padding for smaller screens */
+}
+
+/* 3. The New Modal Content (The Frosted Glass Card) */
+.modal-glass-content {
+  position: relative; /* For positioning child elements if needed */
+  max-width: 520px;
+  width: 100%;
+  
+  /* The Frosted Glass Effect */
+  background-color: rgba(255, 255, 255, 0.75); /* Semi-transparent white */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  /* This enables scrolling INSIDE the modal */
+  max-height: 90vh; /* Don't let the modal be taller than 90% of the screen */
+  overflow-y: auto; /* Show a scrollbar only if content overflows */
+}
+
+/* 4. A helper class for the form inside the modal */
+.modal-form-wrapper {
+  padding: 2.5rem; /* The padding is now on the inner wrapper */
+}
+
+

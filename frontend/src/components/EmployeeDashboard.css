@@ -1,0 +1,201 @@
+/* --- Base Page Layout --- */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem; /* Provides space around the main panel */
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- The Main Glass Panel --- */
+.dashboard-panel {
+  width: 100%;
+  height: calc(100vh - 4rem); /* Full height minus padding */
+  max-width: 1600px;
+  display: flex;
+  
+  /* Glassmorphism Effect */
+  background: rgba(245, 167, 98, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Crucial for keeping content within rounded borders */
+}
+
+/* --- Sidebar --- */
+.dashboard-sidebar {
+  width: 260px;
+  background: rgba(255, 255, 255, 0.2); /* Slightly different transparency */
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0; /* Prevents sidebar from shrinking */
+}
+
+.sidebar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  color: #4a5568; /* Dark grey for text */
+  font-weight: 500;
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+}
+
+.sidebar-link.active {
+  background-color: #5680e9; /* The primary blue from the image */
+  color: white;
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* --- Main Content Area --- */
+.dashboard-content {
+  flex: 1; /* Takes up all remaining space */
+  padding: 2.5rem;
+  overflow-y: auto; /* Enable scrolling for content */
+  display: flex;
+  flex-direction: column;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+
+.content-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- General Button Styles (inspired by image) --- */
+.button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button-primary {
+  background-color: #5680e9;
+  color: white;
+}
+.button-primary:hover {
+  background-color: #466ac9;
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.button-secondary:hover {
+  background-color: white;
+}
+
+/* --- Feedback List & Cards --- */
+.feedback-list {
+  display: grid;
+  /* Responsive grid: creates columns that are at least 350px wide */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+/* The card for the "no feedback" message */
+.info-card {
+  background-color: #fff; /* Opaque white card */
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  grid-column: 1 / -1; /* Make it span all columns */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.info-card h3 {
+  color: #1a202c;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.info-card p {
+  color: #4a5568;
+  line-height: 1.6;
+  max-width: 450px;
+  margin: auto;
+}
+
+/* This centers the entire glass panel on the page */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* This IS the main glass panel */
+.dashboard-panel {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  max-width: 1600px;
+  display: flex;
+  
+  /* The Glass Effect */
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}

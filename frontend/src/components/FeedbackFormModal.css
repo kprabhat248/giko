@@ -1,0 +1,213 @@
+/* --- Modal Backdrop --- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 10, 20, 0.5); /* A slightly cool, dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* Modal animation states */
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+
+/* --- The "Thick Glass" Modal Content with Light Dispersion --- */
+.modal-glass-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh; /* Make sure it doesn't overflow the viewport */
+  
+  /* 1. THE DISPERSION EFFECT: A subtle rainbow gradient layered on a white base */
+  background: 
+    linear-gradient(135deg, 
+      rgba(255, 0, 0, 0.05) 0%,   /* Red */
+      rgba(255, 165, 0, 0.03) 20%, /* Orange */
+      rgba(255, 255, 0, 0.02) 40%, /* Yellow */
+      rgba(0, 128, 0, 0.03) 60%,  /* Green */
+      rgba(0, 0, 255, 0.05) 80%,  /* Blue */
+      rgba(128, 0, 128, 0.06) 100% /* Purple */
+    ),
+    rgba(255, 255, 255, 0.3); /* The main semi-transparent white base */
+
+  /* 2. THE REFRACTION (BLUR): A strong blur for the "thick" glass feel */
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  
+  /* 3. THE STRUCTURE: Border, shadow, and shape */
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  
+  overflow: hidden; /* Important! Keeps content within the rounded borders */
+  outline: none;
+  
+  /* Animation for modal appearing */
+  transform: scale(0.95);
+  transition: transform 300ms ease-in-out;
+}
+
+.ReactModal__Content--after-open {
+    transform: scale(1);
+}
+
+.ReactModal__Content--before-close {
+    transform: scale(0.95);
+}
+
+
+/* --- Internal Layout & Typography --- */
+.modal-form-wrapper {
+  padding: 2.5rem;
+  overflow-y: auto; /* Enable scrolling for content that's too long */
+  max-height: 90vh; /* Match the modal's max-height */
+}
+
+.modal-form-title {
+  color: #1a202c;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.modal-form-subtitle {
+  color: #4a5568;
+  margin: 0.25rem 0 2rem 0;
+  font-size: 1rem;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section-label {
+  display: block;
+  color: #1a202c;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* --- Input & Textarea Styling --- */
+.input-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4a5568;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  color: #1a202c;
+  resize: vertical;
+  transition: all 0.2s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(231, 59, 125, 0.3); /* Match pink button focus */
+}
+
+/* --- Sentiment Picker --- */
+.sentiment-picker {
+  display: flex;
+  gap: 1rem;
+}
+
+.sentiment-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  border: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.sentiment-button:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-3px);
+}
+
+.sentiment-button.selected {
+  border-color: #e73b7d; /* Pink highlight color */
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #1a202c;
+}
+
+.sentiment-button.selected svg {
+  transform: scale(1.1);
+}
+
+
+/* --- Action Buttons --- */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button-cancel, .button-pink {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.button-cancel {
+  background-color: transparent;
+  color: #4a5568;
+}
+
+.button-cancel:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.button-pink {
+  background-color: #e73b7d;
+  color: white;
+}
+
+.button-pink:hover {
+  background-color: #c72a69;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(231, 59, 125, 0.3);
+}
+
+.button-pink:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}

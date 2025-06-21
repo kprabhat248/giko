@@ -1,0 +1,80 @@
+/* 1. Import the "Inter" font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Apply the font to the whole app for consistency */
+body {
+  font-family: 'Inter', sans-serif;
+  /* Add a background to see the glass effect */
+  background: #e0e0e0; /* Or your app's background */
+}
+
+/* 
+  A container to position the header. 
+  The padding ensures content below doesn't start hidden underneath the fixed header.
+*/
+.header-container {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 1rem; /* Creates space around the glass header */
+}
+
+
+/* 2. The Glassmorphism Effect */
+.header-glass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; /* Vertical and horizontal padding */
+  
+  /* --- The Glass Effect --- */
+  background: rgba(255, 255, 255, 0.25); /* Semi-transparent white */
+  backdrop-filter: blur(12px); /* This is the key for the blur effect */
+  -webkit-backdrop-filter: blur(12px); /* For Safari support */
+  border-radius: 12px; /* Rounded corners for the "glass panel" look */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* A subtle border to define the edge */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* 3. Improved Font and Logo Styling */
+.header-logo {
+  font-size: 1.5rem; /* Larger font size */
+  font-weight: 700; /* Bolder */
+  color: #1a202c; /* A dark, modern text color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header-logo:hover {
+  color: #000;
+}
+
+/* 4. Fixed Spacing for User Info */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* The perfect way to space items */
+}
+
+.user-name {
+  font-weight: 500;
+  color: #2d3748;
+}
+
+/* Styling for the logout button to match the theme */
+.logout-button {
+  background-color: #2d3748;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif; /* Ensure font consistency */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #1a202c;
+  transform: translateY(-2px); /* Subtle lift effect */
+}

@@ -1,0 +1,50 @@
+/* This container sits behind all other content */
+.background-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed; /* Fixes it to the viewport */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Puts it behind everything */
+  background-color: #b0ddfa; /* A very light, cool grey background */
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px); /* The key to the soft, diffused look */
+  opacity: 0.75;
+}
+
+/* Position and size the blobs to create a nice composition */
+.blob.pink {
+  width: 400px;
+  height: 400px;
+  background: rgba(130, 146, 24, 0.63);
+  top: -150px;
+  right: -150px;
+}
+
+.blob.blue {
+  width: 500px;
+  height: 500px;
+  background: rgba(234, 10, 246, 0.336);
+  bottom: -200px;
+  left: -200px;
+}
+.blob.red {
+  width: 200px;
+  height: 200px;
+  background: rgba(172, 41, 69, 0.336);
+  bottom: -200px;
+  left: -200px;
+}
+
+.blob.purple {
+    width: 300px;
+    height: 300px;
+    background: rgba(212, 81, 41, 0.46);
+    bottom: 50px;
+    right: 50px;
+}

@@ -1,0 +1,167 @@
+/* --- Main Feedback Card Container --- */
+.feedback-card {
+  background-color: #ffffff; /* Opaque white for readability */
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(45, 55, 72, 0.08); /* Soft, modern shadow */
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #e2e8f0;
+}
+
+.feedback-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(45, 55, 72, 0.12);
+}
+
+/* --- Card Header --- */
+.feedback-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #edf2f7;
+  margin-bottom: 1rem;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #5680e9; /* Primary blue from dashboard */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.author-details .author-name {
+  color: #1a202c;
+  font-weight: 600;
+  display: block;
+}
+
+.author-details .feedback-date {
+  color: #718096;
+  font-size: 0.8rem;
+}
+
+/* --- Tags --- */
+.feedback-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap; /* Allows tags to wrap on smaller cards */
+}
+
+.tag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px; /* Pill shape */
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.tag-blue {
+  background-color: #ebf8ff;
+  color: #3182ce;
+}
+
+/* --- Card Body --- */
+.feedback-card-body {
+  flex-grow: 1; /* Allows body to take up available space */
+}
+
+.feedback-section {
+  margin-bottom: 1.25rem;
+}
+
+.feedback-section h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a0aec0; /* Lighter grey for section title */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ReactMarkdown renders <p> tags by default */
+.feedback-section p {
+  margin: 0;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* --- Card Footer --- */
+.feedback-card-footer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #edf2f7;
+}
+
+.meta-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #718096;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+
+.meta-button:hover {
+  background-color: #f7fafc;
+  color: #2d3748;
+}
+
+/* --- Comment Section Wrapper --- */
+.comment-section-wrapper {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #e2e8f0;
+}
+
+/* --- Acknowledge Button --- */
+.acknowledge-container {
+  margin-top: 1.5rem;
+}
+
+.acknowledge-button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #5a67d8; /* Indigo/Blue */
+  color: white;
+}
+
+.acknowledge-button:hover:not(:disabled) {
+  background-color: #4c51bf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(90, 103, 216, 0.3);
+}
+
+.acknowledge-button:disabled {
+  background-color: #16a34a; /* Green for success */
+  color: white;
+  cursor: default;
+  opacity: 1; /* Ensure it's fully visible when acknowledged */
+}

@@ -1,0 +1,472 @@
+/* --- Main Layout --- */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: transparent;
+}
+
+/* --- Sidebar --- */
+.dashboard-sidebar {
+  width: 280px;
+  background-color: #29729d;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+.sidebar-button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-button.active {
+  background-color: #4f46e5; /* Indigo/Blue from reference */
+  color: white;
+}
+
+.sidebar-logout {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem;
+  align-self: flex-start;
+}
+.sidebar-logout:hover {
+  color: #111827;
+}
+
+/* --- Main Content --- */
+.dashboard-main {
+  flex-grow: 1;
+  padding: 2.5rem 3rem;
+  overflow-y: auto;
+}
+
+.main-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+.main-header p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0.25rem 0 0 0;
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stat-icon-wrapper.blue { background-color: #e0e7ff; color: #4338ca; }
+.stat-icon-wrapper.orange { background-color: #fff7ed; color: #d97706; }
+.stat-icon-wrapper.purple { background-color: #f5f3ff; color: #7c3aed; }
+
+.stat-info .stat-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+.stat-info .stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* --- Content Tabs --- */
+.content-tabs {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+.tab-button {
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6b7280;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tab-button:hover { color: #111827; }
+.tab-button.active { color: #4f46e5; border-bottom-color: #4f46e5; }
+
+/* --- Content List Card --- */
+.content-list-card {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.data-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.data-list-item:not(:last-child) {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.item-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: white;
+  background-color: #4f46e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.item-content { flex-grow: 1; }
+.item-content strong { display: block; color: #111827; font-weight: 600; }
+.item-content span { font-size: 0.875rem; color: #6b7280; }
+
+.button-give-feedback {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.button-give-feedback:hover {
+  background-color: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+/* Add these new styles to your existing ManagerDashboard.css file */
+
+.dashboard-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sentiment-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: 1rem;
+}
+
+.sentiment-dot.positive { background-color: #34d399; }
+.sentiment-dot.neutral { background-color: #f59e0b; }
+.sentiment-dot.negative { background-color: #ef4444; }
+
+/* --- Add/Update these styles in ManagerDashboard.css --- */
+
+/* 1. UPDATE THE SIDEBAR STYLE for the dark glass effect */
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  /* Dark blue glass effect */
+  background-color: rgba(17, 24, 39, 0.75); /* dark slate-900 with transparency */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); /* For Safari */
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e5e7eb; /* Light gray text for contrast */
+}
+
+/* 2. REMOVE THE OLD LOGO STYLE */
+.sidebar-logo {
+  /* This class is no longer used, but good to clear it if it exists */
+  display: none;
+}
+
+/* 3. UPDATE THE SIDEBAR LINK STYLES for dark theme */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* <-- ADD THIS LINE to center the text */
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  color: #212d3f;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #bf5027;
+}
+
+.sidebar-link.active {
+  background-color: #3b82f6; /* Blue for active link */
+  color: white;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+/* 4. UPDATE THE FOOTER and add styles for the new user profile section */
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Puts user on left, logout on right */
+  padding: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+}
+
+.sidebar-user-info .icon {
+  width: 28px;
+  height: 28px;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #9ca3af; /* Muted gray */
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === Main Panel & Content (No major changes) === */
+.dashboard-panel {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+.dashboard-content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+/* ... keep your other content styles like .content-header, .content-tabs etc. ... */
+/* Make sure you have these from before */
+.dashboard-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.content-card {
+  background-color: var(--card-bg-color, #fff);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+}
+.data-list-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.data-list-item:last-child {
+  border-bottom: none;
+}
+/* ... any other existing styles ... */
+
+
+/* === 1. THE NEW ORANGE GLASS SIDEBAR === */
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  width: 280px;
+  flex-shrink: 0;
+  
+  /* Orange Tinted Glass Effect */
+  background-color: rgba(251, 146, 60, 0.15); /* Orange-400 with low opacity */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px); /* For Safari */
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  
+  /* Text and Icon colors for contrast on the orange tint */
+  color: #111827; /* Dark Gray for text */
+}
+
+/* Sidebar Navigation Links */
+.sidebar-nav {
+  margin-top: 2rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  color: #374151; /* Medium-dark gray for links */
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #000000;
+}
+
+.sidebar-link.active {
+  background-color: #fb923c; /* A solid, vibrant orange for the active link */
+  color: white;
+  box-shadow: 0 4px 15px rgba(251, 146, 60, 0.4);
+}
+
+
+/* === 2. THE NEW CENTERED SIDEBAR FOOTER === */
+.sidebar-footer {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;   /* Center them horizontally */
+  gap: 0.75rem;            /* Space between user info and logout */
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sidebar-user-info .icon {
+  width: 36px;
+  height: 36px;
+  color: #1f2937;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #6b7280; /* Muted gray for logout text */
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.logout-button:hover {
+  color: #000000;
+}
+
+
+/* === 3. THE PERFECTLY CENTERED MODAL === */
+/* This is the dark overlay behind the modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 10, 10, 0.7);
+  
+  /* Flexbox magic for centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* This is the modal content itself */
+.modal-glass-content {
+  /* No positioning needed, flexbox handles it! */
+  width: 100%;
+  max-width: 600px; /* Or whatever max-width you prefer */
+  padding: 2rem;
+  border-radius: 16px;
+  outline: none;
+  
+  /* Re-using the same glass effect */
+  background-color: rgba(106, 153, 35, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+/* Add this to your existing ManagerDashboard.css file */
+
+.dashboard-content {
+  flex-grow: 1;
+  overflow-y: auto; /* This makes only the main content scrollable */
+  
+  /* 
+    THE FIX IS HERE:
+    This padding creates space at the top of the content area.
+    It should be equal to the height of your sticky header.
+    Adjust 80px if your header is taller or shorter.
+  */
+  padding: 80px 3rem 2rem 3rem; 
+}
+/* In ManagerDashboard.css */
+

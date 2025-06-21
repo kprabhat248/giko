@@ -1,0 +1,99 @@
+/* --- Styles specific to the Request Feedback Modal --- */
+
+/* Vertically align the icon with the modal title */
+.modal-title-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #1a202c;
+  font-size: 1.75rem; /* Slightly smaller than main form title */
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+/* Style for the main confirmation paragraph */
+.confirmation-text {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.error-message {
+  color: #e53e3e; /* A strong red for errors */
+  background-color: rgba(229, 62, 62, 0.1);
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+/* --- Success State Styling --- */
+
+.success-state-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 0; /* Add some vertical space */
+}
+
+.success-title {
+  font-size: 1.75rem;
+  color: #1a202c;
+  margin: 1.5rem 0 0.5rem 0;
+}
+
+.success-text {
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 350px;
+  margin-bottom: 2rem;
+}
+
+/* Animated Success Icon */
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #16a34a; /* Green */
+  animation: fill_in 0.4s ease-in-out 0.4s forwards, scale_up 0.3s ease-in-out 0.9s both;
+}
+
+.success-icon-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #16a34a;
+  fill: none;
+  animation: stroke_in 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.success-icon-checkmark {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke_in 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke_in {
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scale_up {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fill_in {
+  100% { box-shadow: inset 0px 0px 0px 40px #16a34a; }
+}
