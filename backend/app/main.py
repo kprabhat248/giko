@@ -35,6 +35,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+@app.get("/")
+def health_check():
+    return {"status": "ok"}
 
 # --- Dependencies ---
 def get_db():
