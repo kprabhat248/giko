@@ -18,10 +18,8 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: CORS_ORIGINS
-        fromService:
-          type: web
-          name: giko-frontend
-          property: host
+        value: https://giko56.netlify.app
+
 
   # Frontend (static web service — don't include `plan`)
   - type: web
