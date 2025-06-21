@@ -1,11 +1,9 @@
-# render.yaml - Deploy this using the "New Blueprint" feature on Render.
-
 databases:
-  - name: giko-db # The name of your database.
+  - name: feedback-db
     plan: free
 
 services:
-  # 1. The Python Backend Service
+  # Backend Service
   - type: web
     name: giko-backend
     runtime: docker
@@ -16,30 +14,31 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: giko-db # This MUST match the database name above.
+          name: giko-db
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: CORS_ORIGINS
         fromService:
-          type: static
-          name: giko-frontend # This MUST match the frontend service name below.
+          type: web
+          name: giko-frontend
           property: url
 
-  # 2. The React Frontend Service
-  - type: static
+  # React Frontend Service (as a web service)
+  - type: web
     name: giko-frontend
+    runtime: static
     rootDir: ./frontend
     plan: free
     buildCommand: npm install && npm run build
-    publishDir: build
+    staticPublishPath: build
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
     envVars:
-      - key: REACT_APP_API_URL # Use VITE_API_URL for Vite projects
+      - key: REACT_APP_API_URL
         fromService:
           type: web
-          name: giko-backend # This MUST match the backend service name above.
+          name: giko-backend
           property: url
