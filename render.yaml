@@ -1,63 +1,40 @@
-# render.yaml - The single file to deploy your entire application
-
-# This defines the order of service creation.
-# The database is created first, then the backend, then the frontend.
 previews: enabled
-
 services:
-  # 1. The PostgreSQL Database
-  - type: psql
-    name: feedback-db
-    plan: free # 'starter' is a good paid alternative
-
-  # 2. The Python Backend Service (with Auto-Seeding)
+  # 1. The Python Backend Service (with Auto-Seeding)
   - type: web
     name: giko-backend
-    # Use 'runtime' not 'env'
     runtime: docker
-    # The directory containing your backend code and Dockerfile
     rootDir: ./backend
     plan: free
-    # This command runs your seed script, and if it succeeds, starts the server.
-    # It assumes your Dockerfile's CMD is correctly set to run uvicorn.
-    # We override it here to include the seeding step.
     startCommand: "python -m app.seed && uvicorn app.main:app --host 0.0.0.0 --port 10000"
-    healthCheckPath: / # A simple health check
+    healthCheckPath: /
     envVars:
       - key: DATABASE_URL
-        fromService:
-          type: psql
-          name: giko-db # Must match the database name above
+        fromDatabase:
+          name: feedback-db # Must match the name of the PostgreSQL DB you create manually on Render
           property: connectionString
       - key: SECRET_KEY
-        generateValue: true # Render will create a secure, random key for you
+        generateValue: true
       - key: CORS_ORIGINS
-        # DYNAMICALLY sets the allowed origin to your live frontend's URL
         fromService:
           type: static
-          name: giko-frontend # Must match the frontend name below
+          name: giko-frontend
           property: url
 
-  # 3. The React Frontend Service
+  # 2. The React Frontend Service
   - type: static
     name: giko-frontend
-    # The directory containing your React code
     rootDir: ./frontend
     plan: free
-    # Standard commands to build a React app
     buildCommand: npm install && npm run build
-    # The folder where the build output is placed (usually 'build' for CRA)
     publishDir: build
-    # This rewrite is ESSENTIAL for React Router to work correctly on reloads.
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
     envVars:
-      # This passes the live backend URL to your React app during the build process
-      # Make sure your React code uses process.env.REACT_APP_API_URL
-      - key: REACT_APP_API_URL # Use VITE_API_URL if you use Vite
+      - key: REACT_APP_API_URL
         fromService:
           type: web
-          name: giko-backend # Must match the backend name above
+          name: giko-backend
           property: url
