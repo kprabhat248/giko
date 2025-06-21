@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pydantic[email]
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+# Added for PostgreSQL and .env
+psycopg2-binary
+python-dotenv
+# Added for Bonus Features
+reportlab
+bleach

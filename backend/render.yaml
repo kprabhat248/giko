@@ -1,0 +1,35 @@
+services:
+  # The Python Backend Service
+  - type: web
+    name: feedback-app-backend
+    env: docker
+    # Make sure this repo URL points to YOUR GitHub repository
+    repo: https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: feedback-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        # Update this with your live frontend URL after deployment
+        value: "http://localhost:3000"
+
+  # The PostgreSQL Database
+  - type: psql
+    name: feedback-db
+    plan: free
+    ipAllowList: [] # Allows access from anywhere
+
+# A one-off job to seed the database after the first deployment
+jobs:
+  - type: post_deploy
+    name: db-seed
+    plan: free
+    # Make sure this service name matches your web service name above
+    service: feedback-app-backend
+    startCommand: "python -m app.seed"
