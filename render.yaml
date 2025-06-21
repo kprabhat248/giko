@@ -1,6 +1,11 @@
-previews: enabled
+# render.yaml - Deploy this using the "New Blueprint" feature on Render.
+
+databases:
+  - name: giko-db # The name of your database.
+    plan: free
+
 services:
-  # 1. The Python Backend Service (with Auto-Seeding)
+  # 1. The Python Backend Service
   - type: web
     name: giko-backend
     runtime: docker
@@ -11,14 +16,14 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: feedback-db # Must match the name of the PostgreSQL DB you create manually on Render
+          name: giko-db # This MUST match the database name above.
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: CORS_ORIGINS
         fromService:
           type: static
-          name: giko-frontend
+          name: giko-frontend # This MUST match the frontend service name below.
           property: url
 
   # 2. The React Frontend Service
@@ -33,8 +38,8 @@ services:
         source: /*
         destination: /index.html
     envVars:
-      - key: REACT_APP_API_URL
+      - key: REACT_APP_API_URL # Use VITE_API_URL for Vite projects
         fromService:
           type: web
-          name: giko-backend
+          name: giko-backend # This MUST match the backend service name above.
           property: url
