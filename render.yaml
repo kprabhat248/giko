@@ -3,18 +3,17 @@ databases:
     plan: free
 
 services:
-  # Backend Service
+  # Backend
   - type: web
     name: giko-backend
     runtime: docker
     rootDir: ./backend
     plan: free
-    startCommand: "python -m app.seed && uvicorn app.main:app --host 0.0.0.0 --port 10000"
     healthCheckPath: /
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: giko-db
+          name: feedback-db  # ← this MUST match your Render DB name exactly
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
@@ -22,9 +21,9 @@ services:
         fromService:
           type: web
           name: giko-frontend
-          property: url
+          property: host
 
-  # React Frontend Service (as a web service)
+  # Frontend
   - type: web
     name: giko-frontend
     runtime: static
@@ -41,4 +40,4 @@ services:
         fromService:
           type: web
           name: giko-backend
-          property: url
+          property: host
